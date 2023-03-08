@@ -1,0 +1,18 @@
+services:
+  pgdatabase:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=yelp_root
+      - POSTGRES_PASSWORD=yelp_password
+      - POSTGRES_DB=yelp_db
+    volumes:
+      - "./yelp_postgres_data:/var/lib/postgresql/data:rw"
+    ports:
+      - "5432:5432"
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@yelp.com
+      - PGADMIN_DEFAULT_PASSWORD=yelp_password
+    ports:
+      - "8080:80"
